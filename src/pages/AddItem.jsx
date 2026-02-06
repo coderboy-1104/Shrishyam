@@ -46,19 +46,19 @@ const AddItem = () => {
       formData.append('image', image);
     }
 
-    try {
-      await axios.post(`${API_BASE_URL}/api/foods/categories/add`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      alert("Food Added Successfully!");
-      navigate('/admin-panel');
-    } catch (err) {
-      console.error(err);
-      alert("Failed to add food item.");
+try {
+  await axios.post(`${API_BASE_URL}/api/foods/add`, formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data'
     }
+  });
+  alert("Food Added Successfully!");
+  navigate('/admin-panel');
+} catch (err) {
+  console.error(err);
+  alert("Failed to add food item.");
+}
   };
 
   return (
@@ -161,5 +161,6 @@ const btnStyle = {
   fontWeight: 'bold',
   transition: '0.2s'
 };
+
 
 export default AddItem;
